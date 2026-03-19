@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>$TMH MINER HUB</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+</head>
+<body>
+
+    <div id="splash-screen">
+        <div class="loader-content">
+            <h1 class="logo-text">$TMH</h1>
+            <div class="spinner"></div>
+            <p id="status-load">Menghubungkan ke Rig...</p>
+        </div>
+    </div>
+
+    <header class="header-container">
+        <div class="stat-box">
+            <span class="stat-label">⚡ ENERGY</span>
+            <span class="stat-value energy-text" id="energy">0</span>
+        </div>
+        <div class="stat-box">
+            <span class="stat-label">$TMH BALANCE</span>
+            <span class="stat-value coin-text" id="balance">0.000000</span>
+        </div>
+        <div class="stat-box">
+            <span class="stat-label">💎 DIAMOND</span>
+            <span class="stat-value" id="diamonds" style="color:cyan">0</span>
+        </div>
+    </header>
+
+    <main class="content">
+        <section id="page-mining" class="page-section active">
+            <div class="vga-grid" id="vga-container">
+                </div>
+        </section>
+
+        <section id="page-referral" class="page-section">
+            <div class="card-premium">
+                <h3>👥 Referral Program</h3>
+                <p>Dapatkan 10% bonus koin dari setiap claim teman Anda!</p>
+                <div class="ref-link-box">
+                    <code id="ref-url">https://t.me/BotBossReno?start=12345</code>
+                </div>
+                <button class="btn btn-upgrade" onclick="copyRef()">Copy Link</button>
+            </div>
+        </section>
+    </main>
+
+    <nav class="bottom-nav">
+        <button class="nav-item active" onclick="switchPage('page-mining', this)">
+            <span>⛏️</span><small>Mining</small>
+        </button>
+        <button class="nav-item" onclick="switchPage('page-referral', this)">
+            <span>👥</span><small>Invite</small>
+        </button>
+        <button class="nav-item">
+            <span>💰</span><small>Withdraw</small>
+        </button>
+    </nav>
+
+    <script src="app.js"></script>
+</body>
+</html>
