@@ -115,7 +115,7 @@ async function buyDiamonds(amount, starsPrice) {
     const userId = tg.initDataUnsafe.user.id;
     
     // Panggil fungsi kasir di Supabase
-    const response = await fetch('URL_FUNCTION_SUPABASE_BOSS_TADI', {
+    const response = await fetch('https://ycxebqmolvjdaiyedodk.supabase.co/functions/v1/create-invoice', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
