@@ -111,3 +111,33 @@ async function initApp() {
         document.getElementById('diamonds').innerText = user.diamonds;
     }
 }
+async function buyDiamonds(amount, starsPrice) {
+    const userId = tg.initDataUnsafe.user.id;
+    
+    // Panggil fungsi kasir di Supabase
+    const response = await fetch('URL_FUNCTION_SUPABASE_BOSS_TADI', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + SUPABASE_KEY // API Key Anon Boss
+        },
+        body: JSON.stringify({ 
+            userId: userId, 
+            amount: amount, 
+            price: starsPrice 
+        })
+    });
+
+    const data = await response.json();
+
+    if (data.invoiceLink) {
+        // Tampilkan invoice resmi Telegram Stars
+        tg.openInvoice(data.invoiceLink, async (status) => {
+            if (status === 'paid') {
+                // Pembayaran Berhasil!
+                tg.showPopup({ message: "💎 Diamond Berhasil Ditambahkan!" });
+                initApp(); // Update saldo di layar
+            }
+        });
+    }
+}
