@@ -65,8 +65,8 @@ function switchPage(pageId, el) {
 // Jalankan aplikasi
 initApp();
 // Konfigurasi Supabase (Pastikan sudah terisi)
-const SUPABASE_URL = 'https://xyz.supabase.co';
-const SUPABASE_KEY = 'eyJhbGci...';
+const SUPABASE_URL = 'https://ycxebqmolvjdaiyedodk.supabase.co';
+const SUPABASE_KEY = 'sb_publishable_3W1-V3P00bk6LCl-bk2gGw_4N2gkOiI';
 const supabase = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
 const tg = window.Telegram.WebApp;
@@ -119,7 +119,7 @@ async function buyDiamonds(amount, starsPrice) {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
-            'Authorization': 'Bearer ' + SUPABASE_KEY // API Key Anon Boss
+            'Authorization': 'Bearer ' + sb_publishable_3W1-V3P00bk6LCl-bk2gGw_4N2gkOiI // API Key Anon Boss
         },
         body: JSON.stringify({ 
             userId: userId, 
