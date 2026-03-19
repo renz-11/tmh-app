@@ -9,14 +9,21 @@
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
 </head>
 <body>
-    
     <div id="splash-screen">
-        <div class="loader-content">
-            <h1 class="logo-text">$TMH</h1>
-            <div class="spinner"></div>
-            <p id="status-load">Menghubungkan ke Rig...</p>
+    <div class="splash-content">
+        <h1 class="logo-anim">$TMH</h1>
+        <div class="loader-bar">
+            <div class="progress"></div>
         </div>
+        <div class="running-text-container">
+            <p id="status-text" class="running-text">INITIALIZING QUANTUM MINING RIG...</p>
+        </div>
+        <p id="error-msg" style="color: #ff4444; display: none; font-size: 14px; margin-top: 10px;">
+            ⚠️ Jaringan Terputus. Periksa Koneksi Anda!
+        </p>
     </div>
+    </div>
+    
     <section id="page-shop" class="page-section">
     <div class="card-premium">
         <h3>💎 Diamond Store</h3>
