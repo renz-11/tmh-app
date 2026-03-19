@@ -1,0 +1,26 @@
+.shop-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.shop-item {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    padding: 15px;
+    border-radius: 12px;
+    text-align: center;
+}
+
+.btn-buy {
+    background: linear-gradient(135deg, #facc15, #eab308);
+    color: #000;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 8px;
+    font-weight: bold;
+    margin-top: 10px;
+    width: 100%;
+    cursor: pointer;
+}
