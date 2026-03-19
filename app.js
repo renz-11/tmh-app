@@ -64,3 +64,50 @@ function switchPage(pageId, el) {
 
 // Jalankan aplikasi
 initApp();
+// Konfigurasi Supabase (Pastikan sudah terisi)
+const SUPABASE_URL = 'https://xyz.supabase.co';
+const SUPABASE_KEY = 'eyJhbGci...';
+const supabase = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+const tg = window.Telegram.WebApp;
+
+// --- FUNGSI BELI DIAMOND (STARS) ---
+async function buyDiamonds(amount, starsPrice) {
+    tg.HapticFeedback.impactOccurred('medium');
+    
+    // 1. Minta Invoice dari Backend (Supabase Function)
+    // Kita buat invoice secara aman di sisi server
+    const { data, error } = await supabase.functions.invoke('create-invoice', {
+        body: { 
+            userId: tg.initDataUnsafe.user.id, 
+            amount: amount, 
+            price: starsPrice 
+        }
+    });
+
+    if (data && data.invoiceLink) {
+        // 2. Buka Invoice di Telegram
+        tg.openInvoice(data.invoiceLink, (status) => {
+            if (status === 'paid') {
+                tg.showAlert(`✅ Berhasil! ${amount} Diamond ditambahkan.`);
+                initApp(); // Refresh saldo
+            } else if (status === 'failed') {
+                tg.showAlert("❌ Pembayaran gagal atau dibatalkan.");
+            }
+        });
+    }
+}
+
+// --- FUNGSI SYNC & OFFLINE EARNING ---
+async function initApp() {
+    const userId = tg.initDataUnsafe.user.id;
+    
+    // Ambil data terbaru
+    let { data: user } = await supabase.from('users').select('*').eq('user_id', userId).single();
+    
+    if (user) {
+        document.getElementById('energy').innerText = user.energy;
+        document.getElementById('balance').innerText = parseFloat(user.balance_tmh).toFixed(6);
+        document.getElementById('diamonds').innerText = user.diamonds;
+    }
+}
