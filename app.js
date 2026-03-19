@@ -1,5 +1,5 @@
-const SUPABASE_URL = 'https://xyz.supabase.co';
-const SUPABASE_KEY = 'eyJhbG...';
+const SUPABASE_URL = 'https://ycxebqmolvjdaiyedodk.supabase.co';
+const SUPABASE_KEY = 'sb_publishable_3W1-V3P00bk6LCl-bk2gGw_4N2gkOiI';
 const supabase = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
 const tg = window.Telegram.WebApp;
